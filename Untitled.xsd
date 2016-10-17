@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2011 rel. 2 (http://www.altova.com) by Alexandr Bugrin (NeoFlex) -->
+<xs:schema xmlns="Test" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="Test" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="CreditApplication" type="CreditApplicationType">
+		<xs:annotation>
+			<xs:documentation>Comment describing your root element</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:complexType name="CreditApplicationType">
+		<xs:sequence>
+			<xs:element name="id" type="xs:string"/>
+			<xs:element name="dateApplication" type="xs:date"/>
+			<xs:element name="applicationStatus">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:enumeration value="open"/>
+						<xs:enumeration value="in_progress"/>
+						<xs:enumeration value="closed"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="RequestedProduct">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="typeCredit">
+							<xs:simpleType>
+								<xs:restriction base="xs:string">
+									<xs:enumeration value="consumption"/>
+									<xs:enumeration value="mortgage"/>
+									<xs:enumeration value="carCredit"/>
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:element>
+						<xs:element name="summCredit" type="xs:integer"/>
+						<xs:element name="currencyCredit" type="xs:string"/>
+						<xs:element name="timeCredit" type="xs:float"/>
+						<xs:element name="creditProgram" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:sequence>
+				<xs:element name="ListParticipants">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="ParticipsntApplication" maxOccurs="unbounded"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>
